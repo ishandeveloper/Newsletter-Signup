@@ -1,0 +1,25 @@
+{
+  "name": "newsletter-signup",
+  "version": "1.0.0",
+  "description": "A Webapp that enables visitors to signup for Newsletters.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ishandeveloper/Newsletter-Signup.git"
+  },
+  "keywords": [
+    "newsletter",
+    "mailchimp",
+    "mailchimp-api",
+    "api"
+  ],
+  "author": "ishandeveloper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ishandeveloper/Newsletter-Signup/issues"
+  },
+  "homepage": "https://github.com/ishandeveloper/Newsletter-Signup#readme"
+}
