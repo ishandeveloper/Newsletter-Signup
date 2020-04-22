@@ -43,7 +43,7 @@ app.post('/', (req, res) => {
         if (e) {
             res.send("")
         } else if (response.statusCode == 200) {
-            res.send("OK");
+            res.sendFile(__dirname+"/views/success.html");
         }
     });
 });
