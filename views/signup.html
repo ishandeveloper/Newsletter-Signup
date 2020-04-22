@@ -37,7 +37,7 @@
     <link href="../assets/floating-labels.css" rel="stylesheet">
   </head>
   <body>
-    <form class="form-signin">
+    <form class="form-signin" method="POST">
   <div class="text-center mb-4">
     <img class="mb-4" src="../assets/favicon.png" alt="" width="128" height="128">
     <h1 class="h3 mb-3 font-weight-normal hero-text">Signup To My Newsletter</h1>
@@ -45,12 +45,12 @@
   </div>
 
   <div class="form-label-group">
-    <input type="email" id="inputName" class="form-control" placeholder="First Name" required autofocus>
+    <input type="text" name="fName" id="inputName" class="form-control" placeholder="First Name" required autofocus>
     <label for="inputName">First Name</label>
   </div>
 
   <div class="form-label-group">
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required>
+    <input type="email" name="Email" id="inputEmail" class="form-control" placeholder="Email Address" required>
     <label for="inputEmail">Email Address</label>
   </div>
 

@@ -13,7 +13,12 @@ app.get('/',(req,res)=>{
     res.sendFile(__dirname+"/views/signup.html");
 });
 
-app.post('/');
+app.post('/',(req,res)=>{
+    var name=req.body.fName;
+    var email=req.body.Email;
+    console.log(email);
+    console.log(name);
+});
 
 app.listen(port,()=>{
     console.log("Server Up At "+port)
