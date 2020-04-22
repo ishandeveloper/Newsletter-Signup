@@ -40,11 +40,12 @@ app.post('/', (req, res) => {
         body: jsonData
     };
     request(mailchimp_req, (e, response, body) => {
-        if (e) {
-            res.send("")
-        } else if (response.statusCode == 200) {
+        if (response.statusCode == 200) {
             res.sendFile(__dirname+"/views/success.html");
         }
+        else {
+            res.sendFile(__dirname+"/views/failure.html");
+        }  
     });
 });
 
