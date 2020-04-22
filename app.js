@@ -23,12 +23,12 @@ app.post('/', (req, res) => {
         members: [{
             email_address: email,
             status: "subscribed",
-            merge_fields:{
-                FNAME:name
+            merge_fields: {
+                FNAME: name
             }
         }]
     };
-    var jsonData=JSON.stringify(data);
+    var jsonData = JSON.stringify(data);
     var url = "https://us4.api.mailchimp.com/3.0/lists/" + process.env.UNIQUE_ID;
 
     var mailchimp_req = {
@@ -37,16 +37,15 @@ app.post('/', (req, res) => {
         headers: {
             "Authorization": "ishandeveloper " + process.env.API_KEY
         },
-        body:jsonData
+        body: jsonData
     };
     request(mailchimp_req, (e, response, body) => {
         if (e) {
             res.send("")
-        } else if(response.statusCode==200) {
+        } else if (response.statusCode == 200) {
             res.send("OK");
         }
     });
-
 });
 
 app.listen(port, () => {
