@@ -49,6 +49,12 @@ app.post('/', (req, res) => {
     });
 });
 
+
+app.post(
+    '/failure',(req,res)=>{
+        res.redirect('/');
+    }
+);
 app.listen(port, () => {
     console.log("Server Up At " + port)
 });
