@@ -5,38 +5,50 @@ require('dotenv').config();
 
 var port = process.env.PORT || 8080;
 
-const app=express();
-app.use(bodyParser.urlencoded({extended:true}));
+const app = express();
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 app.use('/assets', express.static('assets'));
 
-app.get('/',(req,res)=>{
-    res.sendFile(__dirname+"/views/signup.html");
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + "/views/signup.html");
 });
 
-app.post('/',(req,res)=>{
-    var name=req.body.fName;
-    var email=req.body.Email;
-    var url="https://us4.api.mailchimp.com/3.0/lists/"+process.env.UNIQUE_ID;
-
-    var mailchimp_req={
-        url: url,
-        method:"POST",
-        headers:{
-            "Authorization":"ishandeveloper "+process.env.API_KEY
-        }
+app.post('/', (req, res) => {
+    var name = req.body.fName;
+    var email = req.body.Email;
+    var data = {
+        members: [{
+            email_address: email,
+            status: "subscribed",
+            merge_fields:{
+                FNAME:name
+            }
+        }]
     };
-    request(mailchimp_req,(e,res,body)=>{
-        if(e){
-            console.log(e);
-        }
-        else{
-            console.log(res.statusCode);
+    var jsonData=JSON.stringify(data);
+    var url = "https://us4.api.mailchimp.com/3.0/lists/" + process.env.UNIQUE_ID;
+
+    var mailchimp_req = {
+        url: url,
+        method: "POST",
+        headers: {
+            "Authorization": "ishandeveloper " + process.env.API_KEY
+        },
+        body:jsonData
+    };
+    request(mailchimp_req, (e, response, body) => {
+        if (e) {
+            res.send("")
+        } else if(response.statusCode==200) {
+            res.send("OK");
         }
     });
 
 });
 
-app.listen(port,()=>{
-    console.log("Server Up At "+port)
+app.listen(port, () => {
+    console.log("Server Up At " + port)
 });
